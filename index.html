@@ -1,43 +1,84 @@
 <html>
     <head>
-        <title>In costruzione</title>
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <!-- Css & script -->
+        <link rel = "stylesheet" type= "text/css" href = "main.css">
+        <link rel = "stylesheet" type= "text/css" href = "progress.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src = "progress.js"></script>
+        <script src = "timer.js"></script>
+
+        <!-- Font -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Pomodoro</title>
     </head>
 
     <body>
-        <div id = "mainContainer">
-            <center>
-            <img src="tomatologo.png">
-            <p class = "maintext">In costruzione...</p>
-            </center>
+        <div id = "cover"></div>
+        <div id = "topBar">
+            <img src = "assets/tomatologo.png">
+        </div>
+
+     
+        <div id = "container">
+            <div class = "timer">
+                <div id = "mainTimer"></div>
+            </div>
+            
+            
+            <div class = "setZone">
+                <div class = "setInfoText">
+                    Imposta il timer e inizia a lavorare
+                </div>
+                    <table style = "width: 100%">
+                        <tr>
+                            <td style = "width: 20%"><span class = "setText">Work</span></td>
+                            <td align = "center" style = "width: 60%">
+                                <select class = "timeSelector" id = "workTime">
+                                    <option value = "900">15 min</option>
+                                    <option value = "1200">20 min</option>
+                                    <option value = "1500">25 min</option>
+                                    <option value = "1800">30 min</option>
+                                    <option value = "2100">35 min</option>
+                                    <option value = "2400">40 min</option>
+                                    <option value = "2700">45 min</option>
+                                </select>
+                            </td>
+                            <td style = "width: 20%"><button class = "setButton" onclick = "setTimer(document.getElementById('workTime').value)">SET</button></td>
+                        </tr>
+                        <tr>
+                            <td><span class = "setText">Break</span></td>
+                            <td align = "center">
+                                <select class = "timeSelector" id = "breakTime">
+                                    <option value = "300">05 min</option>
+                                    <option value = "600">10 min</option>
+                                    <option value = "900">15 min</option>
+                                    <option value = "1200">20 min</option>
+                                </select>
+                            </td>
+                            <td><button class = "setButton" onclick = "setTimer(document.getElementById('breakTime').value)">SET</button></td>
+                        </tr>
+                    </table>
+                <div style = "clear: both"></div>
+            </div>
+
+            <div id = "startButton" class  = "buttons">
+                <button class = "startButton redButton" onclick = "startTimer(timerFrom)" ><i class="icon fa fa-play"></i>   START</button>
+            </div>
+            <div id = "controlButtons" class = "buttons buttonHidden">
+                <button onclick = "restartTimer()" id = "restartButton" class = "controlButton blueButton buttonHidden"><i class="icon fa fa-play"></i>    Start</button>
+                <button onclick = "pauseTimer()" id = "pauseButton" class = "controlButton blueButton "><i class="icon fa fa-pause"></i>    Pausa</button>
+                <button onclick = "stopTimer()" class = "controlButton redButton "><i class="icon fa fa-stop"></i>    Stop</button>
+                <div style = "clear: both"></div>
+            </div>
         </div>
     </body>
-
 </html>
 
-<style>
 
-    * {
-        font-family: 'Roboto', sans-serif;
-    }
-    
-    body {
-        margin: 0;
-    }
 
-    #mainContainer img {
-        max-width: 425px;
-    }
-
-    #mainContainer {
-        position: relative;
-        top: 20%;
-        width: 50%;
-        margin: auto;
-    }
-
-    .maintext {
-        font-size: 32px;
-        margin-top: -15px;
-    }
-</style>
+<script>
+    setDefaultTime();
+</script>
